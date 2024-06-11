@@ -1,0 +1,122 @@
+/* src/app/navigation/navigation.component.css */
+
+.header-bar .main-menu .dropdown {
+    position: relative;
+  }
+  
+  .header-bar .main-menu {
+    margin-bottom: 300px; /* Adjust the value as needed */
+}
+
+  .header-bar .main-menu .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #c2bbac;
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1 75); 
+  }
+  
+  .header-bar .main-menu .dropdown .dropdown-menu .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
+  
+  .header-bar .main-menu .dropdown:hover .dropdown-menu,
+  .header-bar .main-menu .dropdown.show .dropdown-menu {
+    display: block;
+  }
+
+  /* Add this CSS to handle the dropdown open state */
+
+.header-bar .main-menu .dropdown.show .dropdown-menu {
+    display: block;
+  }
+  
+  /* Add a class to show the dropdown when the dropdownOpen flag is true */
+  .header-bar .main-menu .dropdown.show .dropdown-menu {
+    display: block;
+  }
+  
+
+  /* Add shadow effect on hover for dropdown items */
+.header-bar .main-menu .dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #F5EEDC; /* Light background for hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    border-radius: 5px; /* Slightly rounded corners */
+  }
+
+.btn {
+  padding: 8px 16px;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* buttons */
+
+.btn-primary {
+  background-color: #000000; 
+  color: #fff;
+  border: 3px solid #000000; 
+}
+
+.btn-primary:hover {
+  background-color: #363636;
+  border-color: #c2bbac;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background-color: #F5EEDC;
+  color: #000000;
+  border: 3px solid #000000;
+}
+
+.btn-secondary:hover {
+  background-color: #c2bbac;
+  border-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item .btn {
+  display: inline-block;
+  margin: 5px;
+}
+
+.auth-buttons .btn {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.header-bar {
+  border-right: 4px solid black;
+  padding-right: 20px;
+}
+
+@media (max-width: 992px) {
+  .header-bar {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+
