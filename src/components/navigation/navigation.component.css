@@ -4,10 +4,13 @@
     position: relative;
   }
   
+<<<<<<< HEAD
   .header-bar .main-menu {
     margin-bottom: 300px; /* Adjust the value as needed */
 }
 
+=======
+>>>>>>> bf97aa3d3e3976479dfb275270e4c1b3e83968af
   .header-bar .main-menu .dropdown .dropdown-menu {
     display: none;
     position: absolute;
