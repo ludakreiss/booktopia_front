@@ -105,9 +105,18 @@
   margin: 5px;
 }
 
+.auth-buttons {
+  display: flex;
+  flex-direction: column; /* Align buttons vertically */
+  align-items: center;    /* Center horizontally */
+  justify-content: center; /* Center vertically if needed */
+  margin-top: auto; /* Push the buttons to the center if the parent is larger */
+  margin-bottom: auto;
+}
+
+/* Optional: To give some vertical spacing between the buttons */
 .auth-buttons .btn {
-  display: inline-block;
-  margin-left: 10px;
+  margin: 5px 0;
 }
 
 .header-bar {

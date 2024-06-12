@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.page.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2 class="login-heading">Login</h2>
+      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="email">E-Mail Address</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter your email" formControlName="email" required>
+          <p *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.touched" class="validation">
+            <span *ngIf="loginForm.controls.email.errors?.['required']">Email field is required.</span>
+            <span *ngIf="loginForm.controls.email.errors?.['email']">Email format is incorrect.</span>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="Enter your password" formControlName="password" required>
+          <p *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched" class="validation">
+            <span>Password field is required.</span>
+          </p>
+        </div>
+        <button type="submit" class="btn btn-black btn-md">Login</button>
+        <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
