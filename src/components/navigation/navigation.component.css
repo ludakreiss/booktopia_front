@@ -40,23 +40,19 @@
     display: block;
   }
 
-  /* Add this CSS to handle the dropdown open state */
 
 .header-bar .main-menu .dropdown.show .dropdown-menu {
     display: block;
   }
   
-  /* Add a class to show the dropdown when the dropdownOpen flag is true */
   .header-bar .main-menu .dropdown.show .dropdown-menu {
     display: block;
   }
   
-
-  /* Add shadow effect on hover for dropdown items */
 .header-bar .main-menu .dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #F5EEDC; /* Light background for hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-    border-radius: 5px; /* Slightly rounded corners */
+    background-color: #F5EEDC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
   }
 
 .btn {
