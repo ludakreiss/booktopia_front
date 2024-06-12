@@ -1,0 +1,139 @@
+/* Base */
+body {
+  line-height: 1.7;
+  color: #000;
+  font-weight: 400;
+  font-size: 1rem;
+  background: #F5EEDC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h2, a {
+  color: #000;
+}
+
+a {
+  transition: .3s all ease;
+  position: relative;
+  display: inline-block;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #DD4A48;
+}
+
+.login-container {
+  position: relative;
+  left: calc(50% + 100px); 
+  transform: translateX(-50%); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: none;
+}
+
+
+.login-box {
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  background: transparent; 
+  box-shadow: none; 
+}
+
+.login-heading {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  position: relative;
+}
+
+.login-heading:after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #DD4A48;
+  margin: 0.5rem auto 0;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-control {
+  border: none;
+  height: 55px;
+  color: #000;
+  background: rgba(191, 146, 112, 0.3);
+  padding: 0 1rem;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.form-control:focus {
+  background: rgba(191, 146, 112, 0.5);
+  outline: none;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-black {
+  color: #F5EEDC;
+  background-color: #000;
+}
+
+.btn-black:hover {
+  color: #000;
+  background-color: #F5EEDC;
+  border: 2px solid #000;
+}
+.validation {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+form.ng-submitted .validation {
+  display: unset;
+}
+
+.signup-text {
+  margin-top: 1rem;
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.signup-text a {
+  color: #DD4A48;
+}
