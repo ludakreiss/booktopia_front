@@ -1,43 +1,35 @@
-<!-- src/app/navigation/navigation.component.html -->
-
 <header class="header-bar d-flex d-lg-block align-items-center site-navbar-target" data-aos="fade-right">
   <div class="site-logo">
-    <a href="index.html">Booktopia</a>
-  </div>
-  <br>
-  <div class="d-inline-block d-lg-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;">
-    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
-  </div>
-  <div class="main-menu">
-    <ul class="js-clone-nav">
-      <li><a href="" class="nav-link">Home</a></li>
-      <li><a href="" class="nav-link">About</a></li>
-      <li><a href="" class="nav-link">Request a Book</a></li>
-      <li class="dropdown">
-        <a href="#" class="nav-link dropdown-toggle" (click)="toggleDropdown($event)">Discover by Genre</a>
-        <ul class="dropdown-menu">
-          <li><a href="#" class="dropdown-item">Non-Fiction</a></li>
-          <li><a href="#" class="dropdown-item">Romance</a></li>
-          <li><a href="#" class="dropdown-item">Mystery</a></li>
-          <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="auth-buttons">
-    <a href="login" class="btn btn-primary sign-in-button mb-2">Sign In</a>
-    <a href="#" class="btn btn-secondary sign-up-button">Sign Up</a>
+      <a href="index.html">Booktopia</a>
   </div>
 
+  <div class="d-inline-block d-lg-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;">
+      <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+  </div>
+
+  <div class="main-menu">
+      <ul class="js-clone-nav">
+          <li><a href="" class="nav-link">Home</a></li>
+          <li><a href="" class="nav-link">About</a></li>
+          <li><a href="" class="nav-link">Request a Book</a></li>
+          <li class="dropdown" [ngClass]="{'open': dropdownOpen}">
+              <a href="#" class="nav-link dropdown-toggle" (click)="toggleDropdown($event)">Discover by Genre</a>
+              <ul class="dropdown-menu">
+                  <li><a href="#" class="dropdown-item">Non-Fiction</a></li>
+                  <li><a href="#" class="dropdown-item">Romance</a></li>
+                  <li><a href="#" class="dropdown-item">Mystery</a></li>
+                  <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+
+  <div class="auth-buttons">
+      <a *ngIf="!user" href="login" class="btn btn-primary sign-in-button mb-2">Sign In</a>
+      <a *ngIf="!user" href="register" class="btn btn-secondary sign-up-button">Sign Up</a>
+      <div *ngIf="user" class="nav-item">
+          <a class="btn btn-primary sign-in-button mb-2" href="#" role="button">{{ user.name }}</a>
+          <a href="#" (click)="logout()" class="btn btn-secondary sign-up-button">Log Out</a>
+      </div>
+  </div>
 </header>

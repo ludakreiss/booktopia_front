@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+  <link rel="stylesheet" href="register.page.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2 class="login-heading">Register</h2>
+      <form class="login-form" action="your-server-endpoint" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
+          <p class="validation">
+            <span>Username is required.</span>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail Address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          <p class="validation">
+            <span>Email field is required. </span>
+            <span>Email format is incorrect.</span>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+          <p class="validation">
+            <span>Password field is required.</span>
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+          <p class="validation">
+            <span>Password confirmation is required. </span>
+            <span>Passwords do not match.</span>
+          </p>
+        </div>
+        <button type="submit" class="btn btn-black btn-md">Register</button>
+        <p class="signup-text">Already have an account? <a href="/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
