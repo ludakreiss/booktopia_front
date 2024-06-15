@@ -73,9 +73,113 @@
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(223 223 112 / var(--tw-ring-opacity));
 }
-.cover-review-book button{
+.cover-review-book button {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  .content {
+    margin-top: 70px;
+    margin-left: 0px;
+  }
+}
+
+/* Review css */
+.review-list {
+  margin: 0 10rem;
+  background: #fbfaf0;
+  min-width: 600px;
+}
+
+.review {
+  /* background: #F5F3CB; */
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #fbfaf0;
+}
+.ring-gray-300 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(204 204 123 / var(--tw-ring-opacity));
+}
+.review-side {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  width: 150px;
+}
+.review-right-content {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  float: right;
+  width: calc(100% - 110px);
+  padding: 0 1.5rem;
+}
+
+.avatar-container {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+.reviews-title {
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  color: rgb(189, 189, 89);
+  margin: 0 10rem;
+  min-width: 600px;
+  background-color: #fbfaf0;
+}
+.review-title {
+  /* color: #d46b6b; */
+  color: #4e7c9d;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.upper-case {
+  color: rgb(189, 189, 89);
+  font-size: 16px;
+  font-weight: 700;
+}
+.reviewed-at a {
+  color: rgb(189, 189, 89);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2a81c0;
+}
+.review-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-meta a {
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #2a81c0;
+  margin-left: 4px;
+}
+.timing {
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #2a81c0;
+  margin-left: 4px;
+}
+.data-title {
+  align-items: center;
 }

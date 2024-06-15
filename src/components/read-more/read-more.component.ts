@@ -16,13 +16,14 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class ReadMoreComponent implements OnChanges {
   @Input() text: string = '';
+  @Input() maxLength: number = 1000; // Default to 1000 characters if not specified
   showReadMore: boolean = false;
   isCollapsed: boolean = true;
   displayText: string = '';
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['text']) {
-      this.showReadMore = this.text.length > 1000;
+    if (changes['text'] || changes['maxLength']) {
+      this.showReadMore = this.text.length > this.maxLength;
       this.updateDisplayText();
     }
   }
@@ -34,7 +35,7 @@ export class ReadMoreComponent implements OnChanges {
 
   private updateDisplayText() {
     if (this.isCollapsed) {
-      this.displayText = this.text.slice(0, 1000);
+      this.displayText = this.text.slice(0, this.maxLength);
     } else {
       this.displayText = this.text;
     }
