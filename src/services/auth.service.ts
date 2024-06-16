@@ -4,7 +4,7 @@ import { LoginRequest, RegistrationRequest, JwtResponse } from '../models/auth.m
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { ResponseModel, ResponseStatus } from '../models/response.model';
-import { environment } from '../environments/enviroments';
+import { environment } from '../environments/environment.development';
 
 @Injectable({
     providedIn: 'root'
