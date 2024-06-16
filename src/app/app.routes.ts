@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePage } from '../pages/home/home.page';
 
-
 export const routes: Routes = [
   {
     path: '',
@@ -17,5 +16,12 @@ export const routes: Routes = [
     path: 'review-book',
     loadComponent: () =>
       import('../pages/review/review.page').then((module) => module.ReviewPage),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('../pages/register/register.page').then(
+        (module) => module.RegisterPage
+      ),
   },
 ];

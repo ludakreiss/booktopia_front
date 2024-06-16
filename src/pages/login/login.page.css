@@ -4,7 +4,7 @@ body {
   color: #000;
   font-weight: 400;
   font-size: 1rem;
-  background: #F5EEDC;
+  background: #f5eedc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,25 +12,26 @@ body {
   margin: 0;
 }
 
-h2, a {
+h2,
+a {
   color: #000;
 }
 
 a {
-  transition: .3s all ease;
+  transition: 0.3s all ease;
   position: relative;
   display: inline-block;
 }
 
 a:hover {
   text-decoration: none;
-  color: #DD4A48;
+  color: #dd4a48;
 }
 
 .login-container {
   position: relative;
-  left: calc(50% + 100px); 
-  transform: translateX(-50%); 
+  left: calc(50% + 100px);
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,15 +40,14 @@ a:hover {
   background: none;
 }
 
-
 .login-box {
   padding: 2rem;
   border-radius: 10px;
   max-width: 400px;
   width: 100%;
   text-align: center;
-  background: transparent; 
-  box-shadow: none; 
+  background: transparent;
+  box-shadow: none;
 }
 
 .login-heading {
@@ -61,7 +61,7 @@ a:hover {
   display: block;
   width: 50px;
   height: 3px;
-  background: #DD4A48;
+  background: #dd4a48;
   margin: 0.5rem auto 0;
 }
 
@@ -101,7 +101,7 @@ a:hover {
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   cursor: pointer;
   display: inline-block;
   width: 100%;
@@ -109,13 +109,13 @@ a:hover {
 }
 
 .btn-black {
-  color: #F5EEDC;
+  color: #f5eedc;
   background-color: #000;
 }
 
 .btn-black:hover {
   color: #000;
-  background-color: #F5EEDC;
+  background-color: #f5eedc;
   border: 2px solid #000;
 }
 .validation {
@@ -135,5 +135,5 @@ form.ng-submitted .validation {
 }
 
 .signup-text a {
-  color: #DD4A48;
+  color: #dd4a48;
 }

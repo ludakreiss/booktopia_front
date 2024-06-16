@@ -34,7 +34,6 @@ export class LoginPage {
 
   protected submitForm() {
     this.errorMessage = undefined;
-    // console.log(this.loginForm);
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value as LoginRequest).subscribe({
         error: (error: HttpErrorResponse) => {

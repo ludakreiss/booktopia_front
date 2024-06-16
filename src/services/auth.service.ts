@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginRequest, JwtResponse } from '../models/auth.model';
-import { BehaviorSubject } from 'rxjs';
+import {
+  LoginRequest,
+  JwtResponse,
+  RegistrationRequest,
+} from '../models/auth.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { ResponseModel, ResponseStatus } from '../models/response.model';
 import { environment } from '../environments/environment.development';
@@ -13,6 +17,7 @@ export class AuthService {
     // Read JWT
     const str = localStorage.getItem('jwt');
     if (str) {
+      this.jwtToken = JSON.parse(str);
       this.getUserData();
     }
   }
@@ -24,8 +29,6 @@ export class AuthService {
   );
   public allUsers: BehaviorSubject<Users | null> =
     new BehaviorSubject<Users | null>(null);
-
-
 
   login(model: LoginRequest) {
     const loginRequest = this.http.post<ResponseModel<JwtResponse>>(
@@ -43,6 +46,25 @@ export class AuthService {
     });
 
     return loginRequest;
+  }
+
+  register(model: RegistrationRequest): Observable<ResponseModel<JwtResponse>> {
+    const registerRequest = this.http.post<ResponseModel<JwtResponse>>(
+      `${environment.backendUrl}/register`,
+      model
+    );
+    registerRequest.subscribe((resp) => {
+      if (resp.status === ResponseStatus.SUCCESS) {
+        console.log(resp.data);
+        // Save JWT in localStorage after registration
+        localStorage.setItem('jwt', JSON.stringify(resp.data));
+
+        this.jwtToken = resp.data;
+        this.getUserData();
+      }
+    });
+
+    return registerRequest;
   }
 
   getUserData() {
@@ -65,7 +87,7 @@ export class AuthService {
         headers: this.createAuthHeaders(),
       }
     );
-   req.subscribe((resp) => {
+    req.subscribe((resp) => {
       if (resp.status === ResponseStatus.SUCCESS && resp.data) {
         this.allUsers.next(resp.data);
       } else {

@@ -8,13 +8,14 @@ import { ReviewService } from '../../services/review.service';
 import { ReviewModel } from '../../models/review.model';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
+import { ReviewFormComponent } from '../../components/review-form/review-form.component';
 
 @Component({
   selector: 'div.review-book.app-page',
   standalone: true,
   templateUrl: './review.page.html',
   styleUrls: ['./review.page.css'],
-  imports: [ReadMoreComponent, CommonModule],
+  imports: [ReadMoreComponent, CommonModule,ReviewFormComponent],
   providers: [BookService, ReviewService, DatePipe],
 })
 export class ReviewPage implements OnInit {
