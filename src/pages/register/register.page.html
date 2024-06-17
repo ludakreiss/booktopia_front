@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+  <link rel="stylesheet" href="register.page.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2 class="login-heading">Register</h2>
+      <form class="login-form" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+        
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter your username">
+          <p *ngIf="registerForm.controls.username.invalid && registerForm.controls.username.touched" class="validation">
+            <span *ngIf="registerForm.controls.username.errors?.['required']">Username is required.</span>
+          </p>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">E-Mail Address</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email">
+          <p *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" class="validation">
+            <span *ngIf="registerForm.controls.email.errors?.['required']">Email field is required.</span>
+            <span *ngIf="registerForm.controls.email.errors?.['email']">Email format is incorrect.</span>
+          </p>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password">
+          <p *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="validation">
+            <span *ngIf="registerForm.controls.password.errors?.['required']">Password field is required.</span>
+          </p>
+        </div>
+        
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" formControlName="confirmPassword" class="form-control" placeholder="Confirm your password">
+          <p *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched" class="validation">
+            <span *ngIf="registerForm.controls.confirmPassword.errors?.['required']">Password confirmation is required.</span>
+            <span *ngIf="registerForm.hasError('mismatch')">Passwords do not match.</span>
+          </p>
+        </div>
+        
+        <button type="submit" class="btn btn-black btn-md" [disabled]="registerForm.invalid">Register</button>
+        <p class="signup-text">Already have an account? <a routerLink="/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

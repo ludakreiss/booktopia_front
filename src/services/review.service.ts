@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/enviroments';
 import { ReviewModel } from '../models/review.model';
 import { AuthService } from './auth.service';
 import { ResponseModel } from '../models/response.model';
+import { environment } from '../environments/environment.development';
 
 @Injectable()
 export class ReviewService {

@@ -10,5 +10,5 @@ export interface BookModel {
     book_cover?: string,
     genres?: GenreModel[],
     reviews?: ReviewModel[],
-    created_at: Date,
+    created_at?: Date,
 }
