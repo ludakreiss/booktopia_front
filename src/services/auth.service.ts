@@ -18,7 +18,8 @@ export class AuthService {
     const str = localStorage.getItem('jwt');
     if (str) {
       this.jwtToken = JSON.parse(str);
-      this.getUserData();
+      this.getUserData()
+
     }
   }
 
@@ -76,6 +77,7 @@ export class AuthService {
     );
     req.subscribe((resp) => {
       this.user.next(resp.data!);
+
     });
 
     return req;

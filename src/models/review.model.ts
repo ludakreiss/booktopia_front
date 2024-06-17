@@ -7,7 +7,7 @@ export interface ReviewModel {
     title:string,
     rating: number,
     review_text: string,
-    created_at: Date,
-    updated_at:Date,
+    created_at?: Date,
+    updated_at?:Date,
     user?: User;
 }

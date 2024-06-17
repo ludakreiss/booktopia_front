@@ -24,4 +24,11 @@ export const routes: Routes = [
         (module) => module.RegisterPage
       ),
   },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('../pages/profile/profile.page').then(
+        (module) => module.ProfilePage
+      ),
+  },
 ];

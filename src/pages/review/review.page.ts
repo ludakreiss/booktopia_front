@@ -1,6 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ReadMoreComponent } from '../../components/read-more/read-more.component';
+import { ReadMoreComponent } from '../../app/read-more/read-more.component';
 import { BookModel } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -8,14 +8,15 @@ import { ReviewService } from '../../services/review.service';
 import { ReviewModel } from '../../models/review.model';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
-import { ReviewFormComponent } from '../../components/review-form/review-form.component';
+import { ReviewFormComponent } from '../../app/review-form/review-form.component';
+import { environment } from '../../environments/environment.development';
 
 @Component({
   selector: 'div.review-book.app-page',
   standalone: true,
   templateUrl: './review.page.html',
   styleUrls: ['./review.page.css'],
-  imports: [ReadMoreComponent, CommonModule,ReviewFormComponent],
+  imports: [ReadMoreComponent, CommonModule, ReviewFormComponent],
   providers: [BookService, ReviewService, DatePipe],
 })
 export class ReviewPage implements OnInit {
@@ -23,6 +24,7 @@ export class ReviewPage implements OnInit {
     title: '',
     description: '',
     author: '',
+    book_cover: '',
   };
 
   bookDescription?: string = '';
@@ -32,6 +34,9 @@ export class ReviewPage implements OnInit {
   users: User[] = [];
   averageRatingValue: number = 0;
   amountOfReviews: number = 0;
+  bookId: number = 1;
+  currentUser: User | null = null;
+  userId: number = 0;
 
   constructor(
     private bookService: BookService,
@@ -45,12 +50,14 @@ export class ReviewPage implements OnInit {
   }
 
   fetchData() {
-    this.bookService.getBook(2).subscribe({
+    this.bookService.getBook(this.bookId).subscribe({
       next: (response) => {
         const book = response.data;
         if (book) {
           this.book = book;
+          this.book.book_cover = `${environment.imageUrl}${book.book_cover}`;
           this.bookDescription = book.description;
+          this.fetchUser();
           this.fetchUsers();
           this.fetchReviews(book.id);
         } else {
@@ -87,7 +94,15 @@ export class ReviewPage implements OnInit {
       },
     });
   }
-
+  fetchUser() {
+    this.authService.user.subscribe((user) => {
+      if (user) {
+        this.currentUser = user;
+        this.userId = this.currentUser.id;
+        console.log(user)
+      }
+    });
+  }
   fetchUsers() {
     this.authService.getAllUsersData().subscribe({
       next: (response: any) => {
@@ -122,7 +137,7 @@ export class ReviewPage implements OnInit {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm:ss') ?? '';
   }
 
-  getStars(rating: number): Array<{ filled: boolean, half: boolean }> {
+  getStars(rating: number): Array<{ filled: boolean; half: boolean }> {
     return Array(5)
       .fill({})
       .map((_, index) => ({

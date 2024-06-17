@@ -114,6 +114,9 @@
   flex-direction: column;
   width: 150px;
 }
+.review-info{
+  margin-top: 12rem;
+}
 .review-right-content {
   display: flex;
   justify-content: start;

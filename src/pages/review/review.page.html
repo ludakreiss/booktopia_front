@@ -2,11 +2,11 @@
   <section class="book-info">
     <div class="cover-review-book">
       <div class="cover-book">
-        <img src="{{book.book_cover}}" alt="" />
+        <img [src]="book.book_cover" alt="" />
       </div>
       <div class="review-score flex items-center">
         <div class="stars">
-          <ng-container *ngFor="let star of getStars(5)">
+          <ng-container *ngFor="let star of getStars(averageRatingValue)">
             <svg
               *ngIf="star.filled"
               class="w-8 h-8 text-yellow-300"
@@ -84,7 +84,11 @@
     </div>
   </section>
   <section class="review-info">
-    <app-review-form></app-review-form>
+    <app-review-form
+      *ngIf="currentUser"
+      [bookId]="bookId"
+      [userId]="userId"
+    ></app-review-form>
     <div class="reviews-title py-6">
       <div class="data-title ml-3 flex justify-start">
         <svg
@@ -153,7 +157,10 @@
                 <span class="upper-case">BY</span>
                 <a>{{review.user?.name}}</a>
               </span>
-              <span class="timing">{{formatDate(review.created_at)}}</span>
+              <span class="timing"
+                >{{ review.created_at ? formatDate(review.created_at) : 'Unknown
+                date' }}</span
+              >
             </div>
           </div>
           <div class="review-content mt-3">
