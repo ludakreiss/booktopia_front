@@ -4,12 +4,11 @@ export interface LoginRequest {
 }
 
 export interface RegistrationRequest {
-    username?: string;
+    name?: string;
     email?: string;
     password?: string;
     confirmPassword?: string;
 }
-
 export interface JwtResponse {
     access_token: string,
     token_type: string,

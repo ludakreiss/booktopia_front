@@ -57,10 +57,9 @@ export class RegisterPage {
     if (this.registerForm.valid) {
       // Check if the form is valid
       const registrationData: RegistrationRequest = {
-        username: this.registerForm.value.username ?? '',
+        name: this.registerForm.value.username ?? '',
         email: this.registerForm.value.email ?? '',
         password: this.registerForm.value.password ?? '',
-        confirmPassword: this.registerForm.value.confirmPassword ?? '',
       };
       this.authService.register(registrationData).subscribe({
         next: (data) => {
