@@ -4,6 +4,7 @@ import { NavigationComponent } from '../components/navigation/navigation.compone
 import { FooterComponent } from '../components/footer/footer.component';
 import { initFlowbite } from 'flowbite';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,4 +18,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     initFlowbite();
   }
+
 }
