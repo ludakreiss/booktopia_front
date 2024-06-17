@@ -1,0 +1,19 @@
+<div *ngIf="isLoading">Loading...</div>
+<div *ngIf="!isLoading">
+  <form [formGroup]="userForm">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" [readonly]="!isEditing" />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" [readonly]="!isEditing" />
+    </div>
+    <div>
+      <label for="profile_picture">Profile Picture URL:</label>
+      <input id="profile_picture" formControlName="profile_picture" [readonly]="!isEditing" />
+    </div>
+    <button *ngIf="!isEditing" type="button" (click)="enableEditing()">Edit</button>
+    <button *ngIf="isEditing" type="button" (click)="saveChanges()">Save</button>
+  </form>
+</div>
