@@ -3,11 +3,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { Subscription } from 'rxjs';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
     selector: 'nav',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule,SearchComponent],
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css']
 })

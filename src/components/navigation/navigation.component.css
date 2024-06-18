@@ -6,7 +6,7 @@
 
 
 .header-bar .main-menu {
-  margin-bottom: 300px; /* Adjust the value as needed */
+  margin-bottom: 250px; /* Adjust the value as needed */
 }
 
 .header-bar .main-menu .dropdown .dropdown-menu {
@@ -128,5 +128,9 @@ padding-right: 20px;
   padding-right: 0;
 }
 }
-
+.search-bar{
+  width: fit-content;
+  margin-bottom: 150px;
+  margin-top: 20px;
+}
 
