@@ -9,7 +9,7 @@
   
     <div class="main-menu">
         <ul class="js-clone-nav">
-            <li><a href="" class="nav-link">Home</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="" class="nav-link">About</a></li>
             <li><a href="" class="nav-link">Request a Book</a></li>
             <li class="dropdown" [ngClass]="{'open': dropdownOpen}">
@@ -25,10 +25,10 @@
     </div>
   
     <div class="auth-buttons">
-        <a *ngIf="!user" href="login" class="btn btn-primary sign-in-button">Sign In</a>
-        <a *ngIf="!user" href="register" class="btn btn-secondary sign-up-button">Sign Up</a>
-        <div *ngIf="user" class="nav-item">
-            <a class="btn btn-primary sign-in-button" href="#" role="button">{{ user.name }}</a>
+        <a *ngIf= "!user" href="login" class="btn btn-primary sign-in-button">Sign In</a>
+        <a *ngIf= "!user" href="register" class="btn btn-secondary sign-up-button">Sign Up</a>
+        <div *ngIf= "user" class="nav-item">
+            <a class="btn btn-primary sign-in-button" href="profile" role="button">{{ user.name }}</a>
             <br>
             <a href="#" (click)="logout()" class="btn btn-secondary sign-up-button">Log Out</a>
         </div>
