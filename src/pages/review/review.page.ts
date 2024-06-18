@@ -56,6 +56,7 @@ export class ReviewPage implements OnInit {
         if (book) {
           this.book = book;
           this.book.book_cover = `${environment.imageUrl}${book.book_cover}`;
+          console.log(book.book_cover)
           this.bookDescription = book.description;
           this.fetchUser();
           this.fetchUsers();

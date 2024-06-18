@@ -8,35 +8,28 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './search.component.css',
   encapsulation: ViewEncapsulation.Emulated
 })
-export class SearchComponent implements OnInit{
-  data:any
+export class SearchComponent implements OnInit {
+  data: any;
   errorMessage = '';
-  constructor(private searchService : SearchService){
 
-  }
-  
-  ngOnInit(): void {
-      this.getBooksSearch()
-  }
+  constructor(private searchService: SearchService) {}
 
-  // getBookSearch(searchedWord :any ){
-  //     const keyword = searchedWord.target.value;
-  //     const search = this.searchService.getBookSearch(keyword).then( response => {
-  //       this.data = response
-  //       console.log(this.data)
-  //     })
-  // }
-  getBooksSearch(searchedWord?: any) {
-    this.searchService.getBookSearch(searchedWord).subscribe({
-      next: (response) => {
-        if(response){
-          console.log(response)
+  ngOnInit(): void {}
+
+  getBookSearch(searchTerm: string) {
+    this.searchService.getBookSearch(searchTerm).subscribe({
+        next: (response) => {
+            this.data = response;
+            console.log('Search results:', this.data);
+        },
+        error: (error: HttpErrorResponse) => {
+            console.error('Error fetching data:', error);
+            if (error.status === 404) {
+                this.errorMessage = 'Resource not found. Please check your search parameters.';
+            } else {
+                this.errorMessage = 'Failed to fetch data. Please try again later.';
+            }
         }
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error('Error fetching reviews:', error);
-        this.errorMessage = 'Failed to fetch reviews. Please try again later.';
-      },
     });
-  }
+}
 }

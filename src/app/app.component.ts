@@ -4,11 +4,12 @@ import { NavigationComponent } from '../components/navigation/navigation.compone
 import { FooterComponent } from '../components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { initFlowbite } from 'flowbite';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationComponent, FooterComponent, HttpClientModule],
+  imports: [RouterOutlet, NavigationComponent, FooterComponent,ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -1,7 +1,7 @@
 <form class="search-form" data-aos="fade-up" data-aos-delay="100">
-    <input type="text" (input)="getBookSearch($event)" class="form-control search-input" placeholder="Search for books, authors, genres..." />
-    <button type="submit" class="btn btn-primary search-button">
-        <span class="button-text">Search</span>
-        <i class="fas fa-magnifying-glass button-icon"></i>
-    </button>
+   <input type="text" #searchInput class="form-control search-input" placeholder="Search for books, authors, genres..." />
+   <button type="button" class="btn btn-primary search-button" (click)="getBookSearch(searchInput.value)">
+       <span class="button-text">Search</span>
+       <i class="fas fa-magnifying-glass button-icon"></i>
+   </button>
 </form>

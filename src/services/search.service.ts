@@ -4,12 +4,10 @@ import { environment } from '../environments/environment.development';
 import { AuthService } from './auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
-
-  constructor(private http : HttpClient, private authService: AuthService) { }
-
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   // async getBookSearch(word: string): Promise<any> {
   // const response = await new Promise((resolve, reject) => {
@@ -23,11 +21,11 @@ export class SearchService {
   // });
 
   getBookSearch(word: string) {
-    return this.http.get(`${environment.backendUrl}/v1/search/default?search=${word}`, {
-      headers: this.authService.createAuthHeaders()
-    });
+    return this.http.get(
+      `${environment.backendUrl}/search/default?search=${word}`,
+      {
+        headers: this.authService.createAuthHeaders(),
+      }
+    );
   }
-
-
-
 }
