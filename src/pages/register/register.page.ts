@@ -27,7 +27,10 @@ export class RegisterPage {
     {
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8) // Ensure minimum length validation
+      ]),
       confirmPassword: new FormControl('', [Validators.required]),
     },
     { validators: this.passwordsMatchValidator() }
@@ -55,12 +58,14 @@ export class RegisterPage {
   protected submitForm() {
     this.errorMessage = undefined;
     if (this.registerForm.valid) {
-      // Check if the form is valid
+      // Prepare registration data from the form
       const registrationData: RegistrationRequest = {
         name: this.registerForm.value.username ?? '',
         email: this.registerForm.value.email ?? '',
         password: this.registerForm.value.password ?? '',
       };
+  
+      // Call the register method from the authService
       this.authService.register(registrationData).subscribe({
         next: (data) => {
           // On successful registration, navigate to login page
@@ -78,4 +83,5 @@ export class RegisterPage {
       this.registerForm.markAllAsTouched();
     }
   }
+  
 }

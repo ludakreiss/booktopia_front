@@ -33,7 +33,8 @@
           <label for="password">Password</label>
           <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password">
           <p *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="validation">
-            <span *ngIf="registerForm.controls.password.errors?.['required']">Password field is required.</span>
+            <span *ngIf="registerForm.controls.password.errors?.['required']">Password field is required. </span>
+            <span *ngIf="registerForm.controls.password.errors?.['minlength']">Password must be at least 8 characters long.</span>
           </p>
         </div>
         
@@ -41,13 +42,13 @@
           <label for="confirm-password">Confirm Password</label>
           <input type="password" id="confirm-password" formControlName="confirmPassword" class="form-control" placeholder="Confirm your password">
           <p *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched" class="validation">
-            <span *ngIf="registerForm.controls.confirmPassword.errors?.['required']">Password confirmation is required.</span>
+            <span *ngIf="registerForm.controls.confirmPassword.errors?.['required']">Password confirmation is required. </span>
             <span *ngIf="registerForm.hasError('mismatch')">Passwords do not match.</span>
           </p>
         </div>
         
         <button type="submit" class="btn btn-black btn-md" [disabled]="registerForm.invalid">Register</button>
-        <p class="signup-text">Already have an account? <a routerLink="/login">Login</a></p>
+        <p class="signup-text">Already have an account? <a href="login">Login</a></p>
       </form>
     </div>
   </div>

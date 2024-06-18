@@ -48,24 +48,13 @@ export class AuthService {
     return loginRequest;
   }
 
-  register(model: RegistrationRequest): Observable<ResponseModel<JwtResponse>> {
-    const registerRequest = this.http.post<ResponseModel<JwtResponse>>(
+  register(model: RegistrationRequest): Observable<ResponseModel<void>> {
+    return this.http.post<ResponseModel<void>>(
       `${environment.backendUrl}/register`,
       model
     );
-    registerRequest.subscribe((resp) => {
-      if (resp.status === ResponseStatus.SUCCESS) {
-        console.log(resp.data);
-        // Save JWT in localStorage after registration
-        localStorage.setItem('jwt', JSON.stringify(resp.data));
-
-        this.jwtToken = resp.data;
-        this.getUserData();
-      }
-    });
-
-    return registerRequest;
   }
+  
 
   getUserData() {
     const req = this.http.get<ResponseModel<User>>(
@@ -108,15 +97,16 @@ export class AuthService {
       if (resp.status === ResponseStatus.SUCCESS) {
         // Clear JWT token from localStorage
         localStorage.removeItem('jwt');
-
+        
         // Reset the JWT token and user state
         this.jwtToken = undefined;
         this.user.next(null);
       }
     });
-
+  
     return req;
   }
+  
 
   public createAuthHeaders() {
     return new HttpHeaders({
