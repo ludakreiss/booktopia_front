@@ -1,15 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user.model';
-import { Subscription } from 'rxjs';
+// src/app/navigation/navigation.component.ts
+import { Component } from '@angular/core';
+import { SearchComponent } from "../search/search.component";
 
 @Component({
     selector: 'nav',
     standalone: true,
-    imports: [CommonModule],
     templateUrl: './navigation.component.html',
-    styleUrls: ['./navigation.component.css']
+    styleUrls: ['./navigation.component.css'],
+    imports: [SearchComponent]
 })
 export class NavigationComponent implements OnInit, OnDestroy {
     private subscription: Subscription | null = null;

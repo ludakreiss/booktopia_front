@@ -1,13 +1,12 @@
 /* src/app/navigation/navigation.component.css */
 
 .header-bar .main-menu .dropdown {
-  position: relative;
-}
-
-
-.header-bar .main-menu {
-  margin-bottom: 300px; /* Adjust the value as needed */
-}
+    position: relative;
+  }
+  
+  /* .header-bar .main-menu {
+    margin-bottom: 250px; 
+} */
 
 .header-bar .main-menu .dropdown .dropdown-menu {
   display: none;
@@ -104,12 +103,11 @@ margin: 5px;
 }
 
 .auth-buttons {
-display: flex;
-flex-direction: column; /* Align buttons vertically */
-align-items: center;    /* Center horizontally */
-justify-content: center; /* Center vertically if needed */
-margin-top: auto; /* Push the buttons to the center if the parent is larger */
-margin-bottom: auto;
+  display: flex;
+  flex-direction: column; /* Align buttons vertically */
+  justify-content: center; /* Center vertically if needed */
+  margin-top: auto; /* Push the buttons to the center if the parent is larger */
+  margin-bottom: auto;
 }
 
 /* Optional: To give some vertical spacing between the buttons */
@@ -122,11 +120,8 @@ border-right: 4px solid black;
 padding-right: 20px;
 }
 
-@media (max-width: 992px) {
-.header-bar {
-  border-right: none;
-  padding-right: 0;
+.search-bar{
+  width: fit-content;
+  margin-bottom: 150px;
+  margin-top: 20px;
 }
-}
-
-
