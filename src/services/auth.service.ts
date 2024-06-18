@@ -55,12 +55,7 @@ export class AuthService {
     );
     registerRequest.subscribe((resp) => {
       if (resp.status === ResponseStatus.SUCCESS) {
-        console.log(resp.data);
-        // Save JWT in localStorage after registration
-        localStorage.setItem('jwt', JSON.stringify(resp.data));
-
-        this.jwtToken = resp.data;
-        this.getUserData();
+        
       }
     });
 

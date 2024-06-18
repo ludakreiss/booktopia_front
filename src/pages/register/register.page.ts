@@ -25,7 +25,7 @@ export class RegisterPage {
   // Form group for registration
   protected registerForm = new FormGroup(
     {
-      username: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -57,7 +57,7 @@ export class RegisterPage {
     if (this.registerForm.valid) {
       // Check if the form is valid
       const registrationData: RegistrationRequest = {
-        name: this.registerForm.value.username ?? '',
+        name: this.registerForm.value.name ?? '',
         email: this.registerForm.value.email ?? '',
         password: this.registerForm.value.password ?? '',
       };

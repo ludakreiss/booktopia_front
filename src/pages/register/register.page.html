@@ -11,12 +11,11 @@
     <div class="login-box">
       <h2 class="login-heading">Register</h2>
       <form class="login-form" [formGroup]="registerForm" (ngSubmit)="submitForm()">
-        
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" formControlName="username" class="form-control" placeholder="Enter your username">
-          <p *ngIf="registerForm.controls.username.invalid && registerForm.controls.username.touched" class="validation">
-            <span *ngIf="registerForm.controls.username.errors?.['required']">Username is required.</span>
+          <label for="name">name</label>
+          <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your username">
+          <p *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.touched" class="validation">
+            <span *ngIf="registerForm.controls.name.errors?.['required']">Username is required.</span>
           </p>
         </div>
         
