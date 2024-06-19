@@ -1,27 +1,39 @@
+<br>
+<br>
+<!-- Container for the profile content -->
 <div *ngIf="isLoading">Loading...</div>
-<div *ngIf="!isLoading">
-  <form [formGroup]="userForm">
-    <div>
+<div *ngIf="!isLoading" class="profile-page">
+  <h2 class="profile-heading">Profile Page</h2>
+  
+  <!-- Profile picture and upload form -->
+  <div class="profile-photo-container text-center">
+    <img src="../assets/ProfilePic/<?php echo $_SESSION['Pic'];?>" class="rounded img-fluid profile-picture" alt="Profile Picture">
+    <form action="uploadPic.php" method="post" enctype="multipart/form-data" id="uploadForm">
+      <input type="file" id="uploadPhoto" name="uploadPhoto" style="display: none;" accept="image/png, image/jpeg">
+      <label for="uploadPhoto" class="btn btn-primary mt-2">Upload Photo</label>
+    </form>
+  </div>
+  
+  <!-- Profile form -->
+  <form [formGroup]="userForm" class="profile-form">
+    <div class="form-group">
       <label for="name">Name:</label>
       <input id="name" formControlName="name" [readonly]="!isEditing" />
     </div>
-    <div>
+    <div class="form-group">
       <label for="email">Email:</label>
       <input id="email" formControlName="email" [readonly]="!isEditing" />
     </div>
-    <div>
-      <label for="profile_picture">Profile Picture URL:</label>
-      <input
-        id="profile_picture"
-        formControlName="profile_picture"
-        [readonly]="!isEditing"
-      />
+    <div class="button-group">
+      <button *ngIf="!isEditing" type="button" (click)="enableEditing()">
+        Edit
+      </button>
+      <button *ngIf="isEditing" type="button" (click)="saveChanges()">
+        Save
+      </button>
+      <button type="button" class="delete-button" (click)="deleteUser()">
+        Delete Account
+      </button>
     </div>
-    <button *ngIf="!isEditing" type="button" (click)="enableEditing()">
-      Edit
-    </button>
-    <button *ngIf="isEditing" type="button" (click)="saveChanges()">
-      Save
-    </button>
   </form>
 </div>
