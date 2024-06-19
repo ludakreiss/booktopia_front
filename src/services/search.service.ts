@@ -22,7 +22,7 @@ export class SearchService {
 
   getBookSearch(word: string) {
     return this.http.get(
-      `${environment.backendUrl}/search/default?search=${word}`,
+      `${environment.backendUrl}/search?search=${word}`,
       {
         headers: this.authService.createAuthHeaders(),
       }

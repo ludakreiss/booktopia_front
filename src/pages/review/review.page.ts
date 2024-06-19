@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { ReviewFormComponent } from '../../app/review-form/review-form.component';
 import { environment } from '../../environments/environment.development';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'div.review-book.app-page',
@@ -39,6 +40,7 @@ export class ReviewPage implements OnInit {
   userId: number = 0;
 
   constructor(
+    private route: ActivatedRoute,
     private bookService: BookService,
     private reviewService: ReviewService,
     private authService: AuthService,
@@ -46,7 +48,9 @@ export class ReviewPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchData();
+    this.route.queryParams.subscribe(params => {
+      this.bookId = params['bookId'];
+      this.fetchData()});
   }
 
   fetchData() {

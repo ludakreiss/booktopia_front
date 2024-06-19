@@ -22,7 +22,14 @@ export class SearchComponent implements OnInit {
         next: (response) => {
             this.data = response;
             console.log('Search results:', this.data);
-            this.router.navigate(['/search-result'], { queryParams: { query: this.data } });
+            if (this.data && this.data.length > 0) {
+            // Get the ID of the first book
+            const firstBookId = this.data[0].id;
+            // Navigate to the review page with the book ID
+            this.router.navigate(['review-book'], { queryParams: { bookId: firstBookId } });
+            } else {
+            this.errorMessage = 'No books found. Please try a different search term.';
+            }
         },
         error: (error: HttpErrorResponse) => {
             console.error('Error fetching data:', error);
