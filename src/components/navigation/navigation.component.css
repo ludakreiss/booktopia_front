@@ -5,9 +5,7 @@
 }
 
 
-.header-bar .main-menu {
-  margin-bottom: 250px; /* Adjust the value as needed */
-}
+
 
 .header-bar .main-menu .dropdown .dropdown-menu {
   display: none;
@@ -126,7 +124,7 @@ padding-right: 20px;
   margin-bottom: 150px;
   margin-top: 20px;
 }
-}
+
 .search-bar{
   width: fit-content;
   margin-bottom: 150px;

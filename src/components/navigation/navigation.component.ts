@@ -11,7 +11,6 @@ import { SearchComponent } from '../search/search.component';
     imports: [CommonModule,SearchComponent],
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.css'],
-    imports: [SearchComponent]
 })
 export class NavigationComponent implements OnInit, OnDestroy {
     private subscription: Subscription | null = null;
