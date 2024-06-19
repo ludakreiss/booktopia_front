@@ -6,11 +6,10 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user.model';
 import { ResponseModel, ResponseStatus } from '../../models/response.model';
 import { UserService } from '../../services/user.service';
 
@@ -20,7 +19,7 @@ import { UserService } from '../../services/user.service';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.css'],
-  providers:[UserService]
+  providers: [UserService],
 })
 export class ProfilePage implements OnInit {
   protected userForm = new FormGroup({
@@ -32,39 +31,19 @@ export class ProfilePage implements OnInit {
   protected errorMessage?: string;
   protected isLoading = true;
   protected isEditing = false;
-  private userId!: number;
+  protected userId!: number;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private userService:UserService
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.getUser();
   }
 
-  // protected getUser() {
-  //   this.userService.getUser(this.userId).subscribe({
-  //     next: (response) => {
-  //       console.log(response.data)
-  //       this.isLoading = false;
-  //     },
-  //     error: (error: HttpErrorResponse) => {
-  //       const backendError: ResponseModel<void> = error.error;
-  //       if (backendError.status === ResponseStatus.ERROR) {
-  //         this.errorMessage = backendError.message;
-  //       }
-  //       this.isLoading = false;
-  //     },
-  //   });
-  // }
-
   protected getUser() {
     this.authService.user.subscribe((user) => {
       if (user) {
         this.userForm.patchValue(user);
+        this.userId = user.id;
         this.isLoading = false;
       }
     });
@@ -77,12 +56,45 @@ export class ProfilePage implements OnInit {
   protected saveChanges() {
     this.errorMessage = undefined;
     if (this.userForm.valid) {
-      const updatedUser: User = this.userForm.value as User;
+      const { name, email } = this.userForm.value;
 
-      this.userService.updateUser(this.userId, updatedUser).subscribe({
+      const profileData = {
+        name: name || '',
+        email: email || '',
+      };
+      console.log(profileData);
+
+      this.authService.updateProfile(profileData).subscribe({
         next: (response) => {
           this.isEditing = false;
           alert('Profile updated successfully');
+
+          this.authService.getUserData().subscribe();
+        },
+        error: (error: HttpErrorResponse) => {
+          const backendError: ResponseModel<void> = error.error;
+          if (backendError.status === ResponseStatus.ERROR) {
+            this.errorMessage = backendError.message;
+          }
+        },
+      });
+    } else {
+      this.userForm.markAllAsTouched();
+    }
+  }
+  protected deleteUser() {
+    if (
+      confirm(
+        'Are you sure you want to delete your account? This action cannot be undone.'
+      )
+    ) {
+      this.authService.deleteUser(this.userId).subscribe({
+        next: () => {
+          localStorage.removeItem('jwt');
+          window.location.reload();
+          if (!localStorage.getItem('jwt')) {
+            this.router.navigate(['/']);
+          }
         },
         error: (error: HttpErrorResponse) => {
           const backendError: ResponseModel<void> = error.error;
